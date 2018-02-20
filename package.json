@@ -6,8 +6,7 @@
   "author": "Aron Braggans <aron.braggans@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "deploy": "sls deploy",
-    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
+    "deploy": "sls deploy"
   },
   "devDependencies": {
     "aws-sdk": "^2.176.0",
