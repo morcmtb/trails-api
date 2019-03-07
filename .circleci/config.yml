@@ -27,11 +27,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      # Write Tests and run tests! 
-      # - run: yarn test
-
-
+          
       - run:
           name: Deploy application
           command: sls deploy
