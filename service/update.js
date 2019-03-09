@@ -11,7 +11,7 @@ export async function main(event, context) {
     // 'UpdateExpression' defines the attributes to be updated
     // 'ExpressionAttributeValues' defines the value in the update expression
     UpdateExpression:
-      'SET trailStatus = :trailStatus, description = :description, updatedAt = :updatedAt',
+      'SET trailStatus = :trailStatus, description = :description, updatedAt = :updatedAt, updatedBy = :updatedBy',
     ExpressionAttributeValues: {
       ':description': data.trailDescription ? data.trailDescription : null,
       ':trailStatus': data.trailStatus ? data.trailStatus : null,
