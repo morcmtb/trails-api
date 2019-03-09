@@ -15,7 +15,8 @@ export async function main(event, context) {
     ExpressionAttributeValues: {
       ':description': data.trailDescription ? data.trailDescription : null,
       ':trailStatus': data.trailStatus ? data.trailStatus : null,
-      ':updatedAt': new Date().getTime()
+      ':updatedAt': new Date().getTime(),
+      ':updatedBy': event.requestContext.identity.cognitoIdentityId
     },
     ReturnValues: 'ALL_NEW'
   }
