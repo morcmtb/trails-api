@@ -1,2 +1,2 @@
-# roam-trails-api
-Roam Development Open Trails API
+# trails-api
+MORC Open Trails API
