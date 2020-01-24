@@ -1,5 +1,5 @@
 {
   "plugins": ["source-map-support", "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties"],
-  "presets": [["env", {"node": "8.10"}], "stage-3"]
+  "presets": [["@babel/preset-env", {"node": "8.10"}], "stage-3"]
 }
