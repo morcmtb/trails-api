@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-  servicePath: "",
+  servicePath: "./",
   options: {
     stats: false,
     caching: true,
