@@ -24,6 +24,7 @@ jobs:
             npm install
 
       - save_cache:
+          command: rm -rf node_modules/.cache
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}

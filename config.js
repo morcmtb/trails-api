@@ -4,7 +4,7 @@ module.exports = {
   servicePath: "",
   options: {
     stats: false,
-    caching: true,
+    caching: false,
     linting: true,
     copyFiles: null,
     sourcemaps: true
