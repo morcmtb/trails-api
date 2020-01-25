@@ -39,7 +39,7 @@ provider:
 
 functions:
   create:
-    handler: service/create.main
+    handler: create.main
     events:
       - http:
           path: trails
@@ -47,7 +47,7 @@ functions:
           cors: true
           authorizer: aws_iam
   get:
-    handler: service/get.main
+    handler: get.main
     events:
       - http:
           path: trails/{id}
@@ -55,14 +55,14 @@ functions:
           cors: true
           authorizer: aws_iam
   list:
-    handler: service/list.main
+    handler: list.main
     events:
       - http:
           path: trails
           method: get
           cors: true
   update:
-    handler: service/update.main
+    handler: update.main
     events:
       - http:
           path: trails/{id}
@@ -70,7 +70,7 @@ functions:
           cors: true
           authorizer: aws_iam
   delete:
-    handler: service/delete.main
+    handler: delete.main
     events:
       - http:
           path: trails/{id}
