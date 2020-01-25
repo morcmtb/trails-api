@@ -5905,6 +5905,34 @@ serialize-javascript@^2.1.2:
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-2.1.2.tgz#ecec53b0e0317bdc95ef76ab7074b7384785fa61"
   integrity sha512-rs9OggEUF0V4jUSecXazOYsLfu7OGK2qIn3c7IPBiffz32XniEp/TX9Xmc9LQfK2nQ2QKHvZ2oygKUGU0lG4jQ==
 
+serverless-bundle@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/serverless-bundle/-/serverless-bundle-1.2.5.tgz#12ee7f4f16f1d2c398410ab70ddb82bb0f3b7352"
+  integrity sha512-t9NW4WXLnLXExSdP+kzl/UkEWV60vEBuqt+OpDtEsFnq56RjE6g8EGvTFlj1h3CpIgPEiNzQvu+BnbgnUQx+YQ==
+  dependencies:
+    "@babel/core" "^7.5.4"
+    "@babel/plugin-proposal-class-properties" "^7.5.5"
+    "@babel/plugin-transform-runtime" "^7.5.0"
+    "@babel/preset-env" "^7.5.4"
+    "@babel/runtime" "^7.5.4"
+    babel-eslint "^10.0.2"
+    babel-jest "^24.8.0"
+    babel-loader "^8.0.6"
+    babel-plugin-source-map-support "^2.1.1"
+    chalk "^2.4.2"
+    copy-webpack-plugin "^5.0.3"
+    core-js "^3.1.4"
+    cross-spawn "^6.0.5"
+    eslint "^5.16.0"
+    eslint-config-strongloop "^2.1.0"
+    eslint-loader "^2.2.1"
+    hard-source-webpack-plugin "^0.13.1"
+    jest "^24.8.0"
+    regenerator-runtime "^0.13.2"
+    serverless-webpack "^5.3.1"
+    source-map-support "^0.4.18"
+    webpack "^4.35.3"
+
 serverless-domain-manager@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-3.3.1.tgz#2814b46e897369b7f0142c411a56ab6317fdb897"
