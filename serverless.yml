@@ -19,7 +19,7 @@ provider:
   name: aws
   runtime: nodejs10.x
   stage: dev
-  region: us-east-1
+  region: us-east-2
   memorySize: 1024 #default
   iamRoleStatements:
     - Effect: Allow
@@ -31,7 +31,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-1:*:*"
+      Resource: "arn:aws:dynamodb:us-east-2:*:*"
 
 functions:
   create:
