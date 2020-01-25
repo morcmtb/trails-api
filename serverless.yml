@@ -4,11 +4,15 @@ package:
   individually: true
 
 plugins:
-  - serverless-bundle
+  - serverless-webpack
   - serverless-domain-manager
   - serverless-offline
 
 custom:
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: false
+    packager: "npm"
   customDomain:
     domainName: api.morcmtb.net
     basePath: "v1"
