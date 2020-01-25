@@ -11,10 +11,9 @@ plugins:
 custom:
   customDomain:
     domainName: api.morcmtb.net
-    basePath: 'v1'
+    basePath: "v1"
     stage: ${self:provider.stage}
     createRoute53Record: true
-
 
 provider:
   name: aws

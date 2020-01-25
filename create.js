@@ -1,12 +1,12 @@
-import uuid from 'uuid'
-import * as dynamoDbLib from './libs/dynamodb-lib'
-import { success, failure } from './libs/response-lib'
+import uuid from "uuid";
+import * as dynamoDbLib from "./libs/dynamodb-lib";
+import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context) {
-  const data = JSON.parse(event.body)
+  const data = JSON.parse(event.body);
 
   const params = {
-    TableName: 'roam-trails-api',
+    TableName: "roam-trails-api",
     Item: {
       trailId: uuid.v4(),
       trailName: data.trailName,
@@ -21,12 +21,12 @@ export async function main(event, context) {
       updatedAt: new Date().getTime(),
       createdAt: new Date().getTime()
     }
-  }
+  };
 
   try {
-    await dynamoDbLib.call('put', params)
-    return success(params.Item)
+    await dynamoDbLib.call("put", params);
+    return success(params.Item);
   } catch (e) {
-    return failure({ status: false, error: e.message })
+    return failure({ status: false, error: e.message });
   }
 }

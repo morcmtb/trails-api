@@ -1,30 +1,30 @@
-import * as dynamoDbLib from './libs/dynamodb-lib'
-import { success, failure } from './libs/response-lib'
+import * as dynamoDbLib from "./libs/dynamodb-lib";
+import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context) {
-  const data = JSON.parse(event.body)
+  const data = JSON.parse(event.body);
   const params = {
-    TableName: 'roam-trails-api',
+    TableName: "roam-trails-api",
     Key: {
       trailId: event.pathParameters.id
     },
     // 'UpdateExpression' defines the attributes to be updated
     // 'ExpressionAttributeValues' defines the value in the update expression
     UpdateExpression:
-      'SET trailStatus = :trailStatus, description = :description, updatedAt = :updatedAt, updatedBy = :updatedBy',
+      "SET trailStatus = :trailStatus, description = :description, updatedAt = :updatedAt, updatedBy = :updatedBy",
     ExpressionAttributeValues: {
-      ':description': data.trailDescription ? data.trailDescription : null,
-      ':trailStatus': data.trailStatus ? data.trailStatus : null,
-      ':updatedAt': new Date().getTime(),
-      ':updatedBy': event.requestContext.identity.cognitoIdentityId
+      ":description": data.trailDescription ? data.trailDescription : null,
+      ":trailStatus": data.trailStatus ? data.trailStatus : null,
+      ":updatedAt": new Date().getTime(),
+      ":updatedBy": event.requestContext.identity.cognitoIdentityId
     },
-    ReturnValues: 'ALL_NEW'
-  }
+    ReturnValues: "ALL_NEW"
+  };
 
   try {
-    const result = await dynamoDbLib.call('update', params)
-    return success({ status: true })
+    const result = await dynamoDbLib.call("update", params);
+    return success({ status: true });
   } catch (e) {
-    return failure({ status: false, error: e.message })
+    return failure({ status: false, error: e.message });
   }
 }
