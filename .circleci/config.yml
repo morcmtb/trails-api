@@ -16,8 +16,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-
-      - run: 
+      - run:
           name: Install Serverless
           command: |
             sudo npm i -g serverless
@@ -27,11 +26,12 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-          
+
       - run:
           name: Deploy application
-          command: sls create_domain
-          command: sls deploy
+          command: |
+            sls create_domain 
+            sls deploy
 
 workflows:
   version: 2
