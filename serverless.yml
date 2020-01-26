@@ -15,7 +15,7 @@ customDomain:
   domainName: api.morcmtb.info
   basePath: "v1"
   stage: ${self:provider.stage}
- createRoute53Record: true
+  createRoute53Record: true
 
 provider:
   name: aws
