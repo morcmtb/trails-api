@@ -30,6 +30,7 @@ jobs:
           
       - run:
           name: Deploy application
+          command: sls create_domain
           command: sls deploy
 
 workflows:
