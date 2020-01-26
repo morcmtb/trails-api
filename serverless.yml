@@ -1,21 +1,21 @@
-service: roam-trails-api
+service: morc-trails-api
 
 package:
   individually: true
 
 plugins:
   - serverless-bundle
-  # - serverless-domain-manager
+  - serverless-domain-manager
   - serverless-offline
 
 custom:
   stage: ${opt:stage, self:provider.stage}
   tableName: ${self:custom.stage}-trails
-  # customDomain:
-  #   domainName: api.morcmtb.net
-  #   basePath: "v1"
-  #   stage: ${self:provider.stage}
-  #  createRoute53Record: true
+customDomain:
+  domainName: api.morcmtb.info
+  basePath: "v1"
+  stage: ${self:provider.stage}
+ createRoute53Record: true
 
 provider:
   name: aws
