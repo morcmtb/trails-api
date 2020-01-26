@@ -94,7 +94,6 @@ resources:
             KeyType: HASH
         # Set the capacity to auto-scale
         BillingMode: PAY_PER_REQUEST
-
     CognitoUserPool:
       Type: AWS::Cognito::UserPool
       Properties:
@@ -105,7 +104,6 @@ resources:
           - email
         AutoVerifiedAttributes:
           - email
-
     CognitoUserPoolClient:
       Type: AWS::Cognito::UserPoolClient
       Properties:
@@ -121,13 +119,13 @@ resources:
     UserPoolId:
       Value:
         Ref: CognitoUserPool
-  UserPoolClientId:
-    Value:
-      Ref: CognitoUserPoolClient
-  TrailsTableArn:
-    Value:
-      Fn::GetAtt:
-        - TrailsTable
-        - Arn
-    Export:
-      Name: ${self:custom.stage}-TrailsTableArn
+    UserPoolClientId:
+      Value:
+        Ref: CognitoUserPoolClient
+    TrailsTableArn:
+      Value:
+        Fn::GetAtt:
+          - TrailsTable
+          - Arn
+      Export:
+        Name: ${self:custom.stage}-TrailsTableArn
