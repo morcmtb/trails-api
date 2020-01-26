@@ -37,7 +37,7 @@ provider:
       Resource: "arn:aws:dynamodb:us-east-2:*:*"
 
   environment:
-    tableName: ${self:custom.stage}-trails
+    tableName: ${self:custom.stage}-trails"node-sass": "^4.13.1"
 
 functions:
   create:
@@ -95,11 +95,39 @@ resources:
         # Set the capacity to auto-scale
         BillingMode: PAY_PER_REQUEST
 
+    CognitoUserPool:
+      Type: AWS::Cognito::UserPool
+      Properties:
+        # Generate a name based on the stage
+        UserPoolName: ${self:custom.stage}-trails-user-pool
+        # Set email as an alias
+        UsernameAttributes:
+          - email
+        AutoVerifiedAttributes:
+          - email
+
+    CognitoUserPoolClient:
+      Type: AWS::Cognito::UserPoolClient
+      Properties:
+        # Generate an app client name based on the stage
+        ClientName: ${self:custom.stage}-trails=user-pool-client
+        UserPoolId:
+          Ref: CognitoUserPool
+        ExplicitAuthFlows:
+          - ADMIN_NO_SRP_AUTH
+        GenerateSecret: false
+
   Outputs:
-    TrailsTableArn:
-      Value:
-        Fn::GetAtt:
-          - TrailsTable
-          - Arn
-      Export:
-        Name: ${self:custom.stage}-TrailsTableArn
+   UserPoolId:
+    Value:
+      Ref: CognitoUserPool
+  UserPoolClientId:
+    Value:
+      Ref: CognitoUserPoolClient
+  TrailsTableArn:
+    Value:
+      Fn::GetAtt:
+        - TrailsTable
+        - Arn
+    Export:
+      Name: ${self:custom.stage}-TrailsTableArn
