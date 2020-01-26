@@ -9,6 +9,7 @@ plugins:
   - serverless-offline
 
 custom:
+  tableName: ${self:custom.stage}-trails
   # customDomain:
   #   domainName: api.morcmtb.net
   #   basePath: "v1"
@@ -32,6 +33,9 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:us-east-2:*:*"
+
+  environment:
+    tableName: ${self:custom.stage}-trails
 
 functions:
   create:
@@ -73,3 +77,27 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+
+resources:
+  Resources:
+    TrailsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: trailId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: trailId
+            KeyType: HASH
+        # Set the capacity to auto-scale
+        BillingMode: PAY_PER_REQUEST
+
+  Outputs:
+    TrailsTableArn:
+      Value:
+        Fn::GetAtt:
+          - TrailsTable
+          - Arn
+      Export:
+        Name: ${self:custom.stage}-TrailsTableArn

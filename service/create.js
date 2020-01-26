@@ -6,7 +6,7 @@ export async function main(event, context) {
   const data = JSON.parse(event.body);
 
   const params = {
-    TableName: "roam-trails-api",
+    TableName: process.env.tableName,
     Item: {
       trailId: uuid.v4(),
       trailName: data.trailName,
