@@ -11,11 +11,12 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   tableName: ${self:custom.stage}-trails
+
 customDomain:
   domainName: api.morcmtb.info
-  basePath: "v1"
-  stage: ${self:provider.stage}
-  createRoute53Record: true
+    basePath: "v1"
+    stage: ${self:provider.stage}
+    createRoute53Record: true
 
 provider:
   name: aws
