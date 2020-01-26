@@ -37,7 +37,7 @@ provider:
       Resource: "arn:aws:dynamodb:us-east-2:*:*"
 
   environment:
-    tableName: ${self:custom.stage}-trails"node-sass": "^4.13.1"
+    tableName: ${self:custom.stage}-trails"
 
 functions:
   create:
@@ -118,9 +118,9 @@ resources:
         GenerateSecret: false
 
   Outputs:
-   UserPoolId:
-    Value:
-      Ref: CognitoUserPool
+    UserPoolId:
+      Value:
+        Ref: CognitoUserPool
   UserPoolClientId:
     Value:
       Ref: CognitoUserPoolClient
