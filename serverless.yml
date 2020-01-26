@@ -9,6 +9,7 @@ plugins:
   - serverless-offline
 
 custom:
+  stage: ${opt:stage, self:provider.stage}
   tableName: ${self:custom.stage}-trails
   # customDomain:
   #   domainName: api.morcmtb.net
