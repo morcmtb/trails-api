@@ -13,7 +13,7 @@ custom:
   tableName: ${self:custom.stage}-trails
   customDomain:
     domainName: api.morcmtb.info
-    certificateName: "wildcard.morcmtb.info"
+    certificateName: "*.morcmtb.info"
     basePath: "v1"
     stage: ${self:provider.stage}
     createRoute53Record: true
