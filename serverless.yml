@@ -38,8 +38,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        Resource:
-          - "Fn::GetAtt": [TrailsTable, Arn]
+        - "Fn::GetAtt": [TrailsTable, Arn]
 
 functions:
   create:
