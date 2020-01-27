@@ -11,8 +11,7 @@
   "devDependencies": {
     "serverless-bundle": "^1.2.5",
     "serverless-domain-manager": "^3.3.1",
-    "serverless-dotenv-plugin": "^2.1.1",
-    "serverless-offline": "^5.3.3"
+    "serverless-dotenv-plugin": "^2.1.1"
   },
   "dependencies": {
     "uuid": "^3.4.0"

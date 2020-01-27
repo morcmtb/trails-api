@@ -25,7 +25,7 @@ provider:
   region: us-east-2
 
   environment:
-    tableName: ${self:custom.tableName}"
+    tableName: ${self:custom.tableName}
 
   iamRoleStatements:
     - Effect: Allow
@@ -38,8 +38,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - "arn:aws:dynamodb:us-east-2:*:*"
-        #- "Fn::GetAtt": [TrailsTable, Arn]
+        - "Fn::GetAtt": [TrailsTable, Arn]
 
 functions:
   create:
