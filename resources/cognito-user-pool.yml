@@ -1,4 +1,5 @@
- CognitoUserPool:
+ Resources:
+  CognitoUserPool:
     Type: AWS::Cognito::UserPool
     Properties:
       # Generate a name based on the stage
