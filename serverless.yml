@@ -38,7 +38,8 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - "Fn::GetAtt": [TrailsTable, Arn]
+        - "arn:aws:dynamodb:us-east-2:*:*"
+        #- "Fn::GetAtt": [TrailsTable, Arn]
 
 functions:
   create:
