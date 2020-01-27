@@ -25,7 +25,7 @@ provider:
   region: us-east-2
 
   environment:
-    tableName: ${self:custom.trailName}"
+    tableName: ${self:custom.tableName}"
 
   iamRoleStatements:
     - Effect: Allow
@@ -83,6 +83,6 @@ functions:
           authorizer: aws_iam
 
 resources:
-  - ${file(resources/dynamodb.yml)}
+  - ${file(resources/dynamodb-table.yml)}
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
