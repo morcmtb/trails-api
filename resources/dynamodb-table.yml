@@ -1,5 +1,5 @@
 Resources:
-  NotesTable:
+  TrailsTable:
     Type: AWS::DynamoDB::Table
     Properties:
       TableName: ${self:custom.tableName}
