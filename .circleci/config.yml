@@ -29,7 +29,9 @@ jobs:
 
       - run:
           name: Deploy application
-          command: sls deploy
+          command: |
+            sls create_domain 
+            sls deploy
 
 workflows:
   version: 2
