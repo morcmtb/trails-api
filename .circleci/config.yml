@@ -64,7 +64,7 @@ jobs:
           name: Deploy application
           command: |
             sls create_domain 
-            sls deploy --stage
+            sls deploy --stage stage
 
 workflows:
   version: 2
