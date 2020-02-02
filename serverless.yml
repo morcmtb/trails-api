@@ -22,7 +22,7 @@ custom:
     domainName: ${self:custom.domains.${self:custom.stage}}
     certificateName: "*.morcmtb.info"
     basePath: "v1"
-    stage: ${self:provider.stage}
+    stage: ${opt:stage, 'dev'}
     createRoute53Record: true
 
 package:
