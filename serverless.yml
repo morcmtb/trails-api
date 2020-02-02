@@ -1,12 +1,15 @@
 service: morc-trails-api
 
-package:
-  individually: true
-
 plugins:
   - serverless-bundle
   - serverless-domain-manager
   - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-2
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -18,11 +21,8 @@ custom:
     stage: ${self:provider.stage}
     createRoute53Record: true
 
-provider:
-  name: aws
-  runtime: nodejs10.x
-  stage: dev
-  region: us-east-2
+package:
+  individually: true
 
   environment:
     tableName: ${self:custom.tableName}
