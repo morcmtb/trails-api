@@ -13,9 +13,13 @@ provider:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
+  domains:
+    dev: api.morcmtb.info
+    stage: stage-api.morcmtb.info
+    prod: api.morcmtb.org
   tableName: ${self:custom.stage}-trails
   customDomain:
-    domainName: api.morcmtb.info
+    domainName: ${self:custom.domains.${self:custom.stage}}
     certificateName: "*.morcmtb.info"
     basePath: "v1"
     stage: ${self:provider.stage}
