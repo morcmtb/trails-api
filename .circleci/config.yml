@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Deploy application
           command: |
-            sls create_domain 
+            sls create_domain --stage stage
             sls deploy --stage stage
 
 workflows:
