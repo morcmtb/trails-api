@@ -17,13 +17,17 @@ custom:
     dev: api.morcmtb.info
     stage: stage-api.morcmtb.info
     prod: api.morcmtb.org
+  certificates:
+    dev: "*.morcmtb.info"
+    stage: "*.morcmtb.info"
+    prod: "*.morcmtb.org"
   tableName: ${self:custom.stage}-trails
   customDomain:
     domainName: ${self:custom.domains.${self:custom.stage}}
-    certificateName: "*.morcmtb.info"
+    certificateName: ${self:custom.certificates.${self:custom.stage}}
     basePath: "v1"
-    stage: ${opt:stage, 'dev'}
-    createRoute53Record: true
+    stage: ${self:custom.stage}
+    createRoute53Record: false
 
 package:
   individually: true
