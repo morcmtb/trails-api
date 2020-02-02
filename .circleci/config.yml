@@ -66,6 +66,39 @@ jobs:
             sls create_domain --stage stage
             sls deploy --stage stage
 
+  production:
+    docker:
+      - image: circleci/node:8.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install Serverless
+          command: |
+            sudo npm i -g serverless
+            npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Deploy application
+          command: |
+            sls create_domain --stage prod
+            sls deploy --stage prod
+
 workflows:
   version: 2
   build-dev:
@@ -80,3 +113,12 @@ workflows:
           filters:
             branches:
               only: master
+   build-prod:
+    jobs:
+      - production:
+          filters:
+            tags:
+              only: /^v.*
+            branches:
+              only: master
+
