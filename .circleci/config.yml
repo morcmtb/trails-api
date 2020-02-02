@@ -76,7 +76,7 @@ workflows:
               only: develop
   build-stage:
     jobs:
-      - develop:
+      - stage:
           filters:
             branches:
               only: master
