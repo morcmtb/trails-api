@@ -5,12 +5,6 @@ plugins:
   - serverless-domain-manager
   - serverless-offline
 
-provider:
-  name: aws
-  runtime: nodejs10.x
-  stage: ${opt:stage, 'dev'}
-  region: us-east-2
-
 custom:
   stage: ${opt:stage, self:provider.stage}
   domains:
@@ -29,11 +23,16 @@ custom:
     stage: ${self:custom.stage}
     createRoute53Record: false
 
-package:
-  individually: true
-
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-2
   environment:
     tableName: ${self:custom.tableName}
+
+  package:
+    individually: true
 
   iamRoleStatements:
     - Effect: Allow
