@@ -113,7 +113,7 @@ workflows:
           filters:
             branches:
               only: master
-   build-prod:
+  build-prod:
     jobs:
       - production:
           filters:
@@ -121,4 +121,3 @@ workflows:
               only: /^v.*
             branches:
               only: master
-
