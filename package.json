@@ -9,12 +9,12 @@
     "deploy": "sls deploy"
   },
   "devDependencies": {
-    "serverless-bundle": "^1.2.5",
+    "serverless-bundle": "^1.3.3",
     "serverless-domain-manager": "^3.3.1",
-    "serverless-dotenv-plugin": "^2.1.1",
-    "serverless-offline": "^5.12.1"
+    "serverless-dotenv-plugin": "^2.3.2",
+    "serverless-offline": "^6.1.4"
   },
   "dependencies": {
-    "uuid": "^3.4.0"
+    "uuid": "^7.0.3"
   }
 }
