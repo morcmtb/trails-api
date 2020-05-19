@@ -2,7 +2,7 @@ version: 2
 jobs:
   develop:
     docker:
-      - image: circleci/node:8.10
+      - image: circleci/node:lts
 
     working_directory: ~/repo
 
@@ -35,7 +35,7 @@ jobs:
 
   stage:
     docker:
-      - image: circleci/node:8.10
+      - image: circleci/node:lts
 
     working_directory: ~/repo
 
@@ -68,7 +68,7 @@ jobs:
 
   production:
     docker:
-      - image: circleci/node:8.10
+      - image: circleci/node:lts
 
     working_directory: ~/repo
 
