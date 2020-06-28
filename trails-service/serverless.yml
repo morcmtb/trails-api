@@ -1,0 +1,94 @@
+service: trails-service
+
+plugins:
+  - serverless-bundle
+  - serverless-domain-manager
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  domains:
+    dev: api.morcmtb.info
+    stage: stage-api.morcmtb.info
+    prod: api.morcmtb.org
+  certificates:
+    dev: "*.morcmtb.info"
+    stage: "*.morcmtb.info"
+    prod: "*.morcmtb.org"
+  tableName: ${self:custom.stage}-trails
+  customDomain:
+    domainName: api.morcmtb.info
+    certificateName: ${self:custom.certificates.${self:custom.stage}}
+    basePath: "v1"
+    stage: ${self:custom.stage}
+    createRoute53Record: false
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-2
+  environment:
+    SERVICE_NAME: ${self:service}
+    tableName: ${self:custom.tableName}
+
+  package:
+    individually: true
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "Fn::GetAtt": [TrailsTable, Arn]
+
+functions:
+  create:
+    handler: service/create.main
+    events:
+      - http:
+          path: trails
+          method: post
+          cors: true
+          authorizer: aws_iam
+  get:
+    handler: service/get.main
+    events:
+      - http:
+          path: trails/{id}
+          method: get
+          cors: true
+          authorizer: aws_iam
+  list:
+    handler: service/list.main
+    events:
+      - http:
+          path: trails
+          method: get
+          cors: true
+  update:
+    handler: service/update.main
+    events:
+      - http:
+          path: trails/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+  delete:
+    handler: service/delete.main
+    events:
+      - http:
+          path: trails/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
+
+resources:
+  - ${file(resources/dynamodb-table.yml)}
+  - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}

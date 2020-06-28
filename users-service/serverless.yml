@@ -1,0 +1,26 @@
+service: user-service
+
+plugins:
+  - serverless-bundle
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-2
+  environment:
+    SERVICE_NAME: ${self:service}
+
+package:
+  individually: true
+
+functions:
+  hello:
+    handler: service/handler.hello
+    events:
+      - http:
+          path: /
+          method: get
