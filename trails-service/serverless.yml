@@ -11,14 +11,14 @@ custom:
     stage: stage-api.morcmtb.info
     prod: api.morcmtb.org
   certificates:
-    dev: "*.morcmtb.info"
-    stage: "*.morcmtb.info"
-    prod: "*.morcmtb.org"
-  tableName: ${self:custom.stage}-trails
+    dev: '*.morcmtb.info'
+    stage: '*.morcmtb.info'
+    prod: '*.morcmtb.org'
+  tableName: ${self:service}-${self:custom.stage}-trails
   customDomain:
-    domainName: api.morcmtb.info
+    domainName: ${self:custom.domains.${self:custom.stage}}
     certificateName: ${self:custom.certificates.${self:custom.stage}}
-    basePath: "v1"
+    basePath: 'v1'
     stage: ${self:custom.stage}
     createRoute53Record: false
 
@@ -45,7 +45,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - "Fn::GetAtt": [TrailsTable, Arn]
+        - 'Fn::GetAtt': [TrailsTable, Arn]
 
 functions:
   create:
@@ -89,6 +89,6 @@ functions:
           authorizer: aws_iam
 
 resources:
-  - ${file(resources/dynamodb-table.yml)}
-  - ${file(resources/cognito-user-pool.yml)}
-  - ${file(resources/cognito-identity-pool.yml)}
+  - ${file(../resources/dynamodb-table.yml)}
+  - ${file(../resources/cognito-user-pool.yml)}
+  - ${file(../resources/cognito-identity-pool.yml)}
