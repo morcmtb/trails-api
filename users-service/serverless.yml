@@ -11,6 +11,11 @@ provider:
   runtime: nodejs12.x
   stage: ${opt:stage, 'dev'}
   region: us-east-2
+  apiGateway:
+    restApiId:
+      'Fn::ImportValue': ${self:custom.stage}-ApiGatewayRestApiId
+    restApiRootResourceId:
+      'Fn::ImportValue': ${self:custom.stage}-ApiGatewayRestApiRootResourceId
   environment:
     SERVICE_NAME: ${self:service}
 
@@ -22,5 +27,6 @@ functions:
     handler: service/handler.hello
     events:
       - http:
-          path: /
+          path: /users
           method: get
+          cors: true

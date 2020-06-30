@@ -92,3 +92,17 @@ resources:
   - ${file(../resources/dynamodb-table.yml)}
   - ${file(../resources/cognito-user-pool.yml)}
   - ${file(../resources/cognito-identity-pool.yml)}
+  - Outputs:
+      ApiGatewayRestApiId:
+        Value:
+          Ref: ApiGatewayRestApi
+        Export:
+          Name: ${self:custom.stage}-ApiGatewayRestApiId
+
+      ApiGatewayRestApiRootResourceId:
+        Value:
+          Fn::GetAtt:
+            - ApiGatewayRestApi
+            - RootResourceId
+        Export:
+          Name: ${self:custom.stage}-ApiGatewayRestApiRootResourceId
