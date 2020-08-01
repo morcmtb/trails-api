@@ -3,7 +3,7 @@ import { success, failure } from '../../libs/response-lib';
 
 export async function hello(event, context) {
   const params = {
-    UserPoolId: 'us-east-2_HOg04Uu7N',
+    UserPoolId: '',
     AttributesToGet: ['username', 'email'],
     Filter: '',
     Limit: 0,
