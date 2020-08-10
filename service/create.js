@@ -1,4 +1,4 @@
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import * as dynamoDbLib from "../libs/dynamodb-lib";
 import { success, failure } from "../libs/response-lib";
 
@@ -8,19 +8,19 @@ export async function main(event, context) {
   const params = {
     TableName: process.env.tableName,
     Item: {
-      trailId: uuid.v4(),
+      trailId: uuidv4(),
       trailName: data.trailName,
-      description: data.trailDescription,
-      status: data.trailStatus,
-      street: data.trailAddress,
-      city: data.trailCity,
-      state: data.trailState,
-      zipcode: data.trailZipCode,
-      latitude: data.trailLatitude,
-      longitude: data.trailLongitude,
+      description: data.description,
+      trailStatus: data.trailStatus,
+      street: data.street,
+      city: data.city,
+      state: data.state,
+      zipcode: data.zipcode,
+      latitude: data.latitude,
+      longitude: data.longitude,
       updatedAt: new Date().getTime(),
-      createdAt: new Date().getTime()
-    }
+      createdAt: new Date().getTime(),
+    },
   };
 
   try {

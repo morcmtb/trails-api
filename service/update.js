@@ -6,19 +6,19 @@ export async function main(event, context) {
   const params = {
     TableName: process.env.tableName,
     Key: {
-      trailId: event.pathParameters.id
+      trailId: event.pathParameters.id,
     },
     // 'UpdateExpression' defines the attributes to be updated
     // 'ExpressionAttributeValues' defines the value in the update expression
     UpdateExpression:
       "SET trailStatus = :trailStatus, description = :description, updatedAt = :updatedAt, updatedBy = :updatedBy",
     ExpressionAttributeValues: {
-      ":description": data.trailDescription ? data.trailDescription : null,
+      ":description": data.description ? data.description : null,
       ":trailStatus": data.trailStatus ? data.trailStatus : null,
       ":updatedAt": new Date().getTime(),
-      ":updatedBy": event.requestContext.identity.cognitoIdentityId
+      ":updatedBy": event.requestContext.identity.cognitoIdentityId,
     },
-    ReturnValues: "ALL_NEW"
+    ReturnValues: "ALL_NEW",
   };
 
   try {

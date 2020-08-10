@@ -8,15 +8,20 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   domains:
+    ross: ross.morcmtb.info
+    aron: aron.morcmtb.info
     dev: api.morcmtb.info
     stage: stage-api.morcmtb.info
     prod: api.morcmtb.org
   certificates:
+    ross: "*.morcmtb.info"
+    aron: "*.morcmtb.info"
     dev: "*.morcmtb.info"
     stage: "*.morcmtb.info"
     prod: "*.morcmtb.org"
   tableName: ${self:custom.stage}-trails
   customDomain:
+    enabled: false
     domainName: ${self:custom.domains.${self:custom.stage}}
     certificateName: ${self:custom.certificates.${self:custom.stage}}
     basePath: "v1"
