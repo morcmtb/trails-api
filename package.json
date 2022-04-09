@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "acorn": "^7.4.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "serverless-bundle": "^2.0.0",
     "serverless-domain-manager": "^4.2.0",
     "serverless-dotenv-plugin": "^3.0.0",
