@@ -11,7 +11,7 @@
   "devDependencies": {
     "acorn": "^7.4.0",
     "minimist": "^1.2.5",
-    "serverless-bundle": "^2.0.0",
+    "serverless-bundle": "^5.5.0",
     "serverless-domain-manager": "^4.2.0",
     "serverless-dotenv-plugin": "^3.0.0",
     "serverless-offline": "^6.5.0"
